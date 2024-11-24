@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
     },
     image: { type: String }, 
     status: { type: String, default: 'pending' } 
-}, { versionKey: false });  // `versionKey` option should be here
+}, { versionKey: false });  
 
 const User = mongoose.model('User', userSchema);
 

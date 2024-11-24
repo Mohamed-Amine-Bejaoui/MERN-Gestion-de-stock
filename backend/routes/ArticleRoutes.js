@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Article = require('../models/Article');
-const Categorie = require('../models/Categorie'); // Add this to check if the category exists
-
-// Get all articles
+const Categorie = require('../models/Categorie'); 
 router.get('/', async (req, res) => {
   try {
     const articles = await Article.find().populate('id_categorie'); 
@@ -13,7 +11,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Get a single article by id_article
 router.get('/:id', async (req, res) => {
   try {
     const article = await Article.findOne({ id_article: req.params.id }).populate('id_categorie');
@@ -26,9 +23,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Create a new article
 router.post('/', async (req, res) => {
-  // Check if the category exists
   const category = await Categorie.findOne({ id_categorie: req.body.id_categorie });
   if (!category) {
     return res.status(400).json({ message: 'Category not found' });
@@ -52,7 +47,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Update an article
 router.patch('/:id', async (req, res) => {
   try {
     const article = await Article.findOne({ id_article: req.params.id });
@@ -60,7 +54,6 @@ router.patch('/:id', async (req, res) => {
       return res.status(404).json({ message: 'Article not found' });
     }
 
-    // Update the fields
     if (req.body.nom != null) article.nom = req.body.nom;
     if (req.body.id_categorie != null) article.id_categorie = req.body.id_categorie;
     if (req.body.quantite != null) article.quantite = req.body.quantite;
@@ -75,8 +68,6 @@ router.patch('/:id', async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 });
-
-// Delete an article
 router.delete('/:id', async (req, res) => {
   try {
     const article = await Article.findOneAndDelete({ id_article: Number(req.params.id) });
