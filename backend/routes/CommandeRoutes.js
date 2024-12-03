@@ -74,6 +74,17 @@ router.patch('/:id/statut', async (req, res) => {
   }
 });
 
+router.post('/recherche', async (req, res) => {
+  try {
+    const commande = await Commande.findOne({ date_commande:req.body.date });
+    if (!commande) {
+      return res.status(404).json({ message: 'Commande not found' });
+    }
+    res.status(200).json(commande);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching commande', error });
+  }
+});
 
 
 module.exports = router;
