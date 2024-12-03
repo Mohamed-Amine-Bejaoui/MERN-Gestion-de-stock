@@ -28,16 +28,7 @@ export default function Sidebar() {
                             Fournisseur
                         </NavLink>
                     </li>
-                    <li>
-                        <NavLink to="/inventory" className="sidebar-link" activeClassName="active">
-                            Rapport d'inventaire
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/alerts" className="sidebar-link" activeClassName="active">
-                            Alertes
-                        </NavLink>
-                    </li>
+                    
                     <li>
                         <NavLink to="/login" className="sidebar-link logout-link" activeClassName="active">
                             Logout
