@@ -207,3 +207,14 @@
     color: white;
     cursor: pointer;
 }
+
+.Users-content  h2 {
+    margin-top: -5px;
+    background-color: #0180ff;
+    width: 90%;
+    color: white;
+    font-size: 30px;
+    border-radius: 20px;
+    padding: 40px;
+    padding-top: 20px;
+}

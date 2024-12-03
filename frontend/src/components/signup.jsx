@@ -47,10 +47,10 @@ function Signup() {
     } catch (error) {
       if (error.response) {
         console.error('Backend error:', error.response.data);
-        alert(`Error: ${error.response.data.error || 'Unknown error'}`);
+        alert(`image not campatible '}`);
       } else {
         console.error('Error message:', error.message);
-        alert(`Error: ${error.message}`);
+        alert(`image not campatible`);
       }
     }
   };

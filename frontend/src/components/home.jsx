@@ -12,7 +12,6 @@ const Home = () => {
         quantite: "",
         seuil_critique: "",
         prix: "",
-        description: "",
         imagebase64: "",
     });
     const [editingArticle, setEditingArticle] = useState(null);
@@ -75,7 +74,6 @@ const Home = () => {
                 quantite: "",
                 seuil_critique: "",
                 prix: "",
-                description: "",
                 imagebase64: "",
             });
             setIsModalOpen(false); 
@@ -95,18 +93,25 @@ const Home = () => {
             console.error("Error deleting article:", error);
         }
     };
-
     const handleUpdateArticle = async () => {
         try {
+            const newQuantity = editingArticle.quantite_originale - Number(editingArticle.quantite);
+            if (newQuantity < 0) {
+                alert("La quantité ne peut pas être inférieure à zéro.");
+                return;
+            }
+    
             const response = await fetch(
                 `http://localhost:3000/articles/${editingArticle.id_article}`,
                 {
                     method: "PATCH",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(editingArticle),
+                    body: JSON.stringify({ quantite: newQuantity }),
                 }
             );
+    
             if (!response.ok) throw new Error("Failed to update article");
+    
             const updatedArticle = await response.json();
             setArticles(
                 articles.map((article) =>
@@ -120,19 +125,19 @@ const Home = () => {
             console.error("Error updating article:", error);
         }
     };
+    
 
     return (
-        <div className="hc" style={{ display: "flex"}}>
+        <div style={{ display: "flex"}}>
             <Sidebar />
             <div className="home-content" style={{ marginLeft: "20px" }}>
                 <div className="Ban">Articles</div>
-                <div className="contenu">
-                    <button onClick={() => setIsModalOpen(true)} className="ajouter">Add Article</button>
+                <div>
+                    <button onClick={() => setIsModalOpen(true)} className="ajouter">ajouter</button>
                     {isModalOpen && (
-                        <div className="modal">
-                            <div className="modal-content">
+                        <div className="modalA">
+                            <div className="modal-contentA">
                                 <span className="close-btn" onClick={() => setIsModalOpen(false)}>&times;</span>
-                                <h2>+</h2>
                                 <form onSubmit={handleAddArticle}>
                                     <input
                                         type="text"
@@ -189,21 +194,12 @@ const Home = () => {
                                             setNewArticle({ ...newArticle, prix: e.target.value })
                                         }
                                     />
-                                    <textarea
-                                        placeholder="Description"
-                                        value={newArticle.description}
-                                        onChange={(e) =>
-                                            setNewArticle({
-                                                ...newArticle,
-                                                description: e.target.value,
-                                            })
-                                        }
-                                    />
+                                    
                                     <input
                                         type="file"
                                         onChange={handleImageChange}
                                     />
-                                    <button type="submit">Add Article</button>
+                                    <button type="submit">ajouter Article</button>
                                 </form>
                             </div>
                         </div>
@@ -224,17 +220,25 @@ const Home = () => {
                                     <p>Quantité : {article.quantite}</p>
                                     <p>Prix : {article.prix} TND</p>
                                     <button className="buttonAR Del" onClick={() => handleDeleteArticle(article.id_article)}>
-                                        Delete
+                                        supprimer
                                     </button>
-                                    <button className="buttonAR Ed" onClick={() => setEditingArticle({ ...article })}>
-                                        Edit
-                                    </button>
+                                    <button
+                                    className="buttonAR Ed"
+                                    style={{ backgroundColor: "#ffce3b" }}
+                                    onClick={() =>
+                                        setEditingArticle({
+                                            ...article,
+                                            quantite_originale: article.quantite,
+                                        })
+                                    }
+                                >
+                                    modifier
+                                </button>
                                 </div>
                             ))
                         )}
                         {editingArticle && (
                             <div className="editP">
-                                <h3>Edit Article</h3>
                                 <form
                                     onSubmit={(e) => {
                                         e.preventDefault();
@@ -243,7 +247,7 @@ const Home = () => {
                                 >
                                     <input
                                         type="text"
-                                        placeholder="quantité"
+                                        placeholder="Quantité à soustraire"
                                         value={editingArticle.quantite}
                                         onChange={(e) =>
                                             setEditingArticle({
@@ -252,7 +256,7 @@ const Home = () => {
                                             })
                                         }
                                     />
-                                    <button type="submit">Update Article</button>
+                                    <button type="submit">Update Article quantity</button>
                                     <button
                                         onClick={() => setEditingArticle(null)}
                                         type="button"

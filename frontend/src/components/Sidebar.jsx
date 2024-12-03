@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 export default function Sidebar() {
@@ -15,17 +14,17 @@ export default function Sidebar() {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/settings" className="sidebar-link" activeClassName="active">
+                        <NavLink to="/Categorie" className="sidebar-link" activeClassName="active">
                             Categorie
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/tables" className="sidebar-link" activeClassName="active">
+                        <NavLink to="/commandes" className="sidebar-link" activeClassName="active">
                             Commandes
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/maps" className="sidebar-link" activeClassName="active">
+                        <NavLink to="/fournisseurs" className="sidebar-link" activeClassName="active">
                             Fournisseur
                         </NavLink>
                     </li>

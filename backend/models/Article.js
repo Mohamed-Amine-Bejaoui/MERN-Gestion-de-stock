@@ -4,7 +4,7 @@ const AutoIncrement = require('mongoose-sequence')(mongoose);
 const articleSchema = new mongoose.Schema({
   id_article: {
     type: Number,
-    // No need to set `unique: true` because AutoIncrement ensures uniqueness
+   
   },
   nom: {
     type: String,
@@ -26,9 +26,7 @@ const articleSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  description: {
-    type: String,
-  },
+  
   imagebase64: {
     type: String,
   },

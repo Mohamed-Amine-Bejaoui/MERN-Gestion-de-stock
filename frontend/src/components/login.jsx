@@ -1,4 +1,3 @@
-// src/components/Login.js
 
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; 
@@ -8,6 +7,8 @@ import '../styles/login.css';
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState(''); 
+  const [token, setToken] = useState(null); 
   const navigate = useNavigate(); 
 
   const handleLogin = async (e) => {
@@ -15,8 +16,23 @@ function Login() {
     try {
       const response = await axios.post('http://localhost:3000/login', { email, password });
       console.log('Login successful', response.data);
-      navigate('/home'); 
+      
+      const { token, redirectUrl } = response.data;
+
+      setToken(token);
+
+      if (redirectUrl) {
+        navigate(redirectUrl); 
+      } else {
+        navigate('/home'); 
+      }
+
     } catch (error) {
+      if (error.response && error.response.data) {
+        setErrorMessage(error.response.data.error || "Login failed");
+      } else {
+        setErrorMessage("An error occurred, please try again");
+      }
       console.error('Error logging in:', error);
     }
   };
@@ -52,6 +68,8 @@ function Login() {
           </div>
           <button type="submit">Connexion</button>
         </form>
+
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import SideAd from './SideAd';
+import "../../styles/Adhome.css";
 
 const HomeAd = () => {
     const [users, setUsers] = useState([]);
@@ -37,30 +38,30 @@ const HomeAd = () => {
         <div style={{ display: "flex" }}>
             <SideAd />
             <div className="Users-content" style={{ marginLeft: "20px" }}>
-                <h2>Approved users list</h2>
+                <h2 >Utilisateurs approuvé</h2>
                 <div className="Users">
                     {users.length > 0 ? (
                         users.map((user) => (
                             <div key={user._id} className="UserCard">
                             <p title={user.name} className="truncate-text">
-                                <strong>Name:</strong> {user.name}
+                                <strong>Nom:</strong> {user.name}
                             </p>
                             <p title={user.email} className="truncate-text">
                                 <strong>Email:</strong> {user.email}
                             </p>
                             <p title={user.phone_number} className="truncate-text">
-                                <strong>Phone:</strong> {user.phone_number}
+                                <strong>Tel:</strong> {user.phone_number}
                             </p>
                             <button
                                 className="buttonAR"
                                 onClick={() => handleDeleteUser(user._id)}
                             >
-                                Delete
+                                Supprimer
                             </button>
                         </div>
                         ))
                     ) : (
-                        <p>No users found.</p>
+                        <p>pas de Utilisateurs trouvé</p>
                     )}
                 </div>
             </div>

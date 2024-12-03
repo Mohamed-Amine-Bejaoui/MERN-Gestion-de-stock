@@ -4,7 +4,8 @@ body {
     overflow: hidden;
 }
 
-.modal {
+.modalA {
+    padding-top: 0px;
     position: fixed;
     top: 0;
     left: 0;
@@ -16,9 +17,11 @@ body {
     align-items: center;
 }
 
-.modal-content {
+.modal-contentA {
+
     background: white;
-    padding: 20px;
+    padding: 30px;
+    padding-top: 80px;
     border-radius: 5px;
     width: 400px;
     position: relative;
@@ -107,8 +110,8 @@ body {
     max-width: 1300px;
     justify-content: flex-start; 
     padding: 10px;
-    overflow-y: auto; /* Ensure vertical scrolling */
-    height: 600px; /* Set height to trigger scroll */
+    overflow-y: auto; 
+    height: 600px;
 }
 
 .home-content {
@@ -121,7 +124,7 @@ body {
 .Card {
     width: 150; 
     height: 250px;
-    border: 2px solid #0180ff;
+    border: 3px solid #000000;
     border-radius: 20px;
     padding: 10px;
     text-align: center;
@@ -159,15 +162,19 @@ body {
     font-size: 12px;
     margin-top: -5px
 }
-
-.Del {
-    background-color: rgb(249, 88, 88);
-    margin-right: 7px;
-}
-
 .Ed {
-    background-color: rgb(249, 202, 17);
+    background-color: #ffce3b;
+    font-weight: bolder;
+    
+
 }
+.Del {
+    background-color: rgb(255, 0, 0);
+    margin-right: 7px;
+    font-weight: bolder;
+}
+
+
 .editP{
     position: fixed;
     top: 0;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import SideAd from './SideAd';
+import "../../styles/Adhome.css";
 
 const PendingAd = () => {
     const [users, setUsers] = useState([]);
@@ -73,31 +74,31 @@ const PendingAd = () => {
     return (
         <div className="pendingAd-container">
             <SideAd />
-            <div className="users-content">
-                <h2>Pending users list</h2>
+            <div className="Users-content" style={{marginLeft:"20px"}}>
+                <h2>Utilisateurs en attente</h2>
                 <div className="users">
                     {users.length > 0 ? (
                         users.map((user) => (
                             <div key={user._id} className="user-card">
                                 <p title={user.name} className="truncate-text">
-                                    <strong>Name:</strong> {user.name}
+                                    <strong>Nom:</strong> {user.name}
                                 </p>
                                 <p title={user.email} className="truncate-text">
                                     <strong>Email:</strong> {user.email}
                                 </p>
                                 <p title={user.phone_number} className="truncate-text">
-                                    <strong>Phone:</strong> {user.phone_number}
+                                    <strong>Tel:</strong> {user.phone_number}
                                 </p>
                                 <button className="button-ar" onClick={() => handleDeleteUser(user._id)}>
-                                    Delete
+                                    Supprimer
                                 </button>
                                 <button className="button-ar view-button" onClick={() => handleViewUser(user)}>
-                                    View
+                                    voir
                                 </button>
                             </div>
                         ))
                     ) : (
-                        <p>No users found.</p>
+                        <p>Pas de Utilisateurs trouvés</p>
                     )}
                 </div>
             </div>
@@ -108,14 +109,14 @@ const PendingAd = () => {
                         <img src={selectedUser.image} alt="User" className="user-image" />
                         <div className="modal-actions">
                             <button onClick={handleValidateUser} className="button-validate">
-                                Validate
+                                Valider
                             </button>
                             <button onClick={handleRefuseUser} className="button-refuse">
-                                Refuse
+                                Refuser
                             </button>
                         </div>
                         <button onClick={() => setIsModalOpen(false)} className="button-close">
-                            Close
+                            fermer
                         </button>
                     </div>
                 </div>
