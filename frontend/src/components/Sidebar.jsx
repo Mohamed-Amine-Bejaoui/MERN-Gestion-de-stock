@@ -28,6 +28,12 @@ export default function Sidebar() {
                             Fournisseur
                         </NavLink>
                     </li>
+                    <li>
+
+                        <NavLink to="/inventory" className="sidebar-link" activeClassName="active">
+                            Rapports
+                        </NavLink>
+                    </li>
                     
                     <li>
                         <NavLink to="/login" className="sidebar-link logout-link" activeClassName="active">
