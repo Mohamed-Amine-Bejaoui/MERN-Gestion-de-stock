@@ -98,7 +98,7 @@ const PendingAd = () => {
                             </div>
                         ))
                     ) : (
-                        <p>Pas de Utilisateurs trouvés</p>
+                        <p>loading</p>
                     )}
                 </div>
             </div>

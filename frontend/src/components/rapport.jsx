@@ -63,7 +63,7 @@ const Rapport = () => {
               ))}
             </ul>
           ) : (
-            <p>Aucun rapport généré.</p>
+            <p>loading</p>
           )}
         </div>
       </div>
