@@ -36,12 +36,12 @@
 .Link{
     margin-left: -40px;
     text-decoration: none;
-    width: 500px;
+    width: 1000px;
     background-color:#222224;
-    height: 50px;
+    height: 40px;
     border-radius: 10px;
     margin-bottom: 20px;
-    padding: 10px;
+    padding: 20px;
 }
 .Link a{
     color: aliceblue;
