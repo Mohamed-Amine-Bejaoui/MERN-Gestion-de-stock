@@ -12,7 +12,7 @@ useEffect(() => {
   
   const fetchCategories = async () => {
     try {
-        const response = await fetch("http://localhost:3000/categories");
+        const response = await fetch("https://mern-gestion-de-stock-production.up.railway.app/categories");
         if (!response.ok) throw new Error("Failed to fetch categories");
         const data = await response.json();
         setCategories(data); 
@@ -26,7 +26,7 @@ fetchCategories();
 
 const handleDeletecat = async (id) => {
   try {
-      const response = await fetch(`http://localhost:3000/categories/${id}`, {
+      const response = await fetch(`https://mern-gestion-de-stock-production.up.railway.app/categories/${id}`, {
           method: "DELETE",
       });
       if (!response.ok) throw new Error("Failed to delete categorie");
@@ -38,7 +38,7 @@ const handleDeletecat = async (id) => {
 const handleAddCategorie = async (e) => {
   e.preventDefault(); 
   try {
-      const response = await fetch("http://localhost:3000/categories", {
+      const response = await fetch("https://mern-gestion-de-stock-production.up.railway.app/categories", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newCat),
@@ -58,7 +58,7 @@ const handleAddCategorie = async (e) => {
 const handleUpdateCat = async () => {
   try {
       const response = await fetch(
-          `http://localhost:3000/categories/${editingCat.id_categorie}`,
+          `https://mern-gestion-de-stock-production.up.railway.app/categories/${editingCat.id_categorie}`,
           {
               method: "PATCH",
               headers: { "Content-Type": "application/json" },

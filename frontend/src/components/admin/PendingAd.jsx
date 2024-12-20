@@ -10,7 +10,7 @@ const PendingAd = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await fetch("http://localhost:3000/users");
+                const response = await fetch("https://mern-gestion-de-stock-production.up.railway.app/users");
                 if (!response.ok) throw new Error("Failed to fetch users");
                 const data = await response.json();
                 setUsers(data.filter((user) => user.status === "pending" && user.name !== "admin"));
@@ -23,7 +23,7 @@ const PendingAd = () => {
 
     const handleDeleteUser = async (id) => {
         try {
-            const response = await fetch(`http://localhost:3000/deleteuser/${id}`, {
+            const response = await fetch(`https://mern-gestion-de-stock-production.up.railway.app/deleteuser/${id}`, {
                 method: "DELETE",
             });
             if (!response.ok) throw new Error("Failed to delete user");
@@ -41,7 +41,7 @@ const PendingAd = () => {
 
     const handleValidateUser = async () => {
         try {
-            const response = await fetch(`http://localhost:3000/users/${selectedUser._id}/approve`, {
+            const response = await fetch(`https://mern-gestion-de-stock-production.up.railway.app/users/${selectedUser._id}/approve`, {
                 method: "PATCH",
                 body: JSON.stringify({ status: 'approved' }),
                 headers: { 'Content-Type': 'application/json' },
@@ -57,7 +57,7 @@ const PendingAd = () => {
 
     const handleRefuseUser = async () => {
         try {
-            const response = await fetch(`http://localhost:3000/users/${selectedUser._id}/approve`, {
+            const response = await fetch(`https://mern-gestion-de-stock-production.up.railway.app/users/${selectedUser._id}/approve`, {
                 method: "PATCH",
                 body: JSON.stringify({ status: 'rejected' }),
                 headers: { 'Content-Type': 'application/json' },

@@ -8,7 +8,7 @@ const HomeAd = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await fetch("http://localhost:3000/users");
+                const response = await fetch("https://mern-gestion-de-stock-production.up.railway.app/users");
                 if (!response.ok) throw new Error("Failed to fetch users");
                 const data = await response.json();
                 setUsers(data.filter((user) => user.status === "approved" && user.name !== "admin"));
@@ -22,7 +22,7 @@ const HomeAd = () => {
     const handleDeleteUser = async (id) => {
     try {
         console.log("Attempting to delete user with ID:", id);
-        const response = await fetch(`http://localhost:3000/deleteuser/${id}`, {
+        const response = await fetch(`https://mern-gestion-de-stock-production.up.railway.app/deleteuser/${id}`, {
             method: "DELETE",
         });
         console.log("Response status:", response.status);

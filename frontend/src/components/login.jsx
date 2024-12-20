@@ -14,7 +14,7 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/login', { email, password });
+      const response = await axios.post('https://mern-gestion-de-stock-production.up.railway.app/login', { email, password });
       console.log('Login successful', response.data);
       
       const { token, redirectUrl } = response.data;

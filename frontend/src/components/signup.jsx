@@ -35,7 +35,7 @@ function Signup() {
     };
 
     try {
-      const response = await axios.post('http://localhost:3000/signup', userData);
+      const response = await axios.post('https://mern-gestion-de-stock-production.up.railway.app/signup', userData);
       console.log('Signup successful', response.data);
 
       if (response.data.status === "approved") {

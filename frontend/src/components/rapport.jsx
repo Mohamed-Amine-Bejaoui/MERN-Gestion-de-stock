@@ -7,7 +7,7 @@ const Rapport = () => {
 
   const fetchReports = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/rapport/rapportinventaire');
+      const response = await axios.get('https://mern-gestion-de-stock-production.up.railway.app/rapport/rapportinventaire');
       setReports(response.data);
     } catch (err) {
       console.error(err);
@@ -16,7 +16,7 @@ const Rapport = () => {
 
   const generateReport = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/rapport/generate');
+      const response = await axios.post('https://mern-gestion-de-stock-production.up.railway.app/rapport/generate');
       fetchReports(); 
     } catch (err) {
       console.error(err);
@@ -55,7 +55,7 @@ const Rapport = () => {
                   <p style={{color:"white"}}>
                     Rapport #{rapport.id_rapport} - {new Date(rapport.date_generation).toLocaleDateString()}
                   </p>
-                  <a href={`http://localhost:3000/public/reports/${rapport.fileName}`} target="_blank" rel="noopener noreferrer" className="rapport-link">
+                  <a href={`https://mern-gestion-de-stock-production.up.railway.app/public/reports/${rapport.fileName}`} target="_blank" rel="noopener noreferrer" className="rapport-link">
                     Consulter
                   </a>
                 </div>

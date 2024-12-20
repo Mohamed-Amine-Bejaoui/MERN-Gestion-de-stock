@@ -20,7 +20,7 @@ const Home = () => {
     useEffect(() => {
         const fetchArticles = async () => {
             try {
-                const response = await fetch("http://localhost:3000/articles");
+                const response = await fetch("https://mern-gestion-de-stock-production.up.railway.app/articles");
                 if (!response.ok) throw new Error("Failed to fetch articles");
                 const data = await response.json();
                 setArticles(data);
@@ -33,7 +33,7 @@ const Home = () => {
 
         const fetchCategories = async () => {
             try {
-                const response = await fetch("http://localhost:3000/categories");
+                const response = await fetch("https://mern-gestion-de-stock-production.up.railway.app/categories");
                 if (!response.ok) throw new Error("Failed to fetch categories");
                 const data = await response.json();
                 setCategories(data); 
@@ -60,7 +60,7 @@ const Home = () => {
     const handleAddArticle = async (e) => {
         e.preventDefault(); 
         try {
-            const response = await fetch("http://localhost:3000/articles", {
+            const response = await fetch("https://mern-gestion-de-stock-production.up.railway.app/articles", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(newArticle),
@@ -84,7 +84,7 @@ const Home = () => {
 
     const handleDeleteArticle = async (id) => {
         try {
-            const response = await fetch(`http://localhost:3000/articles/${id}`, {
+            const response = await fetch(`https://mern-gestion-de-stock-production.up.railway.app/articles/${id}`, {
                 method: "DELETE",
             });
             if (!response.ok) throw new Error("Failed to delete article");
@@ -102,7 +102,7 @@ const Home = () => {
             }
     
             const response = await fetch(
-                `http://localhost:3000/articles/${editingArticle.id_article}`,
+                `https://mern-gestion-de-stock-production.up.railway.app/articles/${editingArticle.id_article}`,
                 {
                     method: "PATCH",
                     headers: { "Content-Type": "application/json" },

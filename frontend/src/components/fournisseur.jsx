@@ -15,7 +15,7 @@ const Fournisseur = () => {
   useEffect(() => {
     const fetchFournisseurs = async () => {
       try {
-        const response = await fetch("http://localhost:3000/fournisseur");
+        const response = await fetch("https://mern-gestion-de-stock-production.up.railway.app/fournisseur");
         if (!response.ok) throw new Error("Failed to fetch fournisseurs");
         const data = await response.json();
         setFournisseurs(data);
@@ -29,7 +29,7 @@ const Fournisseur = () => {
   const handleAddFournisseur = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/fournisseur", {
+      const response = await fetch("https://mern-gestion-de-stock-production.up.railway.app/fournisseur", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newFournisseur),
@@ -47,7 +47,7 @@ const Fournisseur = () => {
   const handleUpdateFournisseur = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/fournisseur/${editingFournisseur.id_fournisseur}`,
+        `https://mern-gestion-de-stock-production.up.railway.app/fournisseur/${editingFournisseur.id_fournisseur}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -71,7 +71,7 @@ const Fournisseur = () => {
 
   const handleDeleteFournisseur = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/fournisseur/${id}`, {
+      const response = await fetch(`https://mern-gestion-de-stock-production.up.railway.app/fournisseur/${id}`, {
         method: "DELETE",
       });
       if (!response.ok) throw new Error("Failed to delete fournisseur");

@@ -20,7 +20,7 @@ const Commandes = () => {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await fetch("http://localhost:3000/articles");
+        const response = await fetch("https://mern-gestion-de-stock-production.up.railway.app/articles");
         if (!response.ok) throw new Error("Failed to fetch articles");
         const data = await response.json();
         setArticles(data);
@@ -37,7 +37,7 @@ const Commandes = () => {
 
     const fetchCommandes = async () => {
       try {
-        const response = await fetch("http://localhost:3000/commandes");
+        const response = await fetch("https://mern-gestion-de-stock-production.up.railway.app/commandes");
         if (!response.ok) throw new Error("Failed to fetch commandes");
         const data = await response.json();
         setCommandes(data);
@@ -49,7 +49,7 @@ const Commandes = () => {
 
     const fetchFournisseurs = async () => {
       try {
-        const response = await fetch("http://localhost:3000/fournisseur");
+        const response = await fetch("https://mern-gestion-de-stock-production.up.railway.app/fournisseur");
         if (!response.ok) throw new Error("Failed to fetch fournisseurs");
         const data = await response.json();
         setFournisseurs(data);
@@ -71,7 +71,7 @@ const Commandes = () => {
 
   const handleDeleteCommande = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/commandes/${id}`, {
+      const response = await fetch(`https://mern-gestion-de-stock-production.up.railway.app/commandes/${id}`, {
         method: "DELETE",
       });
       if (!response.ok) throw new Error("Failed to delete commande");
@@ -85,7 +85,7 @@ const Commandes = () => {
   const handleAddCommande = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/commandes/", {
+      const response = await fetch("https://mern-gestion-de-stock-production.up.railway.app/commandes/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newCommande),
@@ -109,14 +109,14 @@ const Commandes = () => {
 
   const addquantity = async (q, id_article) => {
     try {
-      const oldqResponse = await fetch(`http://localhost:3000/articles/${id_article}`);
+      const oldqResponse = await fetch(`https://mern-gestion-de-stock-production.up.railway.app/articles/${id_article}`);
       if (!oldqResponse.ok) throw new Error("Failed to fetch article details");
 
       const oldq = await oldqResponse.json();
 
       const newQuantity = oldq.quantite + q;
 
-      const response = await fetch(`http://localhost:3000/articles/${id_article}`, {
+      const response = await fetch(`https://mern-gestion-de-stock-production.up.railway.app/articles/${id_article}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ quantite: newQuantity }),
@@ -132,7 +132,7 @@ const Commandes = () => {
 
   const validateStatus = async (id, statut, quantite, id_article) => {
     try {
-      const response = await fetch(`http://localhost:3000/commandes/${id}/statut`, {
+      const response = await fetch(`https://mern-gestion-de-stock-production.up.railway.app/commandes/${id}/statut`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ statut }),
